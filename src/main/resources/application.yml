@@ -2,3 +2,12 @@ spring:
   profiles:
     active:
       - local
+
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          google:
+            identityprovider:
+              metadata-uri: "classpath:metadata/GoogleIDPMetadata.xml"
