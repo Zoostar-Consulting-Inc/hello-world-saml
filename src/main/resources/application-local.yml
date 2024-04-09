@@ -10,3 +10,12 @@ server:
   servlet:
     context-path: /hws
 # -----------------
+
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          google:
+            identityprovider:
+              metadata-uri: "classpath:metadata/GoogleIDPMetadata.xml"
