@@ -29,7 +29,7 @@ public class HelloWorldSaml extends SpringBootServletInitializer {
 	SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
 		return security
 				.authorizeRequests(authorize -> authorize.antMatchers("/").permitAll().anyRequest().authenticated())
-				.saml2Login(withDefaults()).build();
+				.saml2Login(withDefaults()).saml2Logout(withDefaults()).build();
 	}
 
 	@Override
