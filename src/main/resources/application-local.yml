@@ -17,5 +17,5 @@ spring:
       relyingparty:
         registration:
           google:
-            assertingparty:
+            identityprovider:
               metadata-uri: "classpath:metadata/GoogleIDPMetadata.xml"
