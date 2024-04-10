@@ -18,4 +18,5 @@ spring:
         registration:
           google:
             identityprovider:
+              entity-id: net-zoostar-hello-world-saml
               metadata-uri: "classpath:metadata/GoogleIDPMetadata.xml"
