@@ -4,6 +4,8 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -14,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @SpringBootApplication
-public class HelloWorldSaml {
+public class HelloWorldSaml extends SpringBootServletInitializer {
 
 	@Bean
 	OpenAPI openAPI() {
@@ -28,6 +30,11 @@ public class HelloWorldSaml {
 		return security
 				.authorizeRequests(authorize -> authorize.antMatchers("/").permitAll().anyRequest().authenticated())
 				.saml2Login(withDefaults()).build();
+	}
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(HelloWorldSaml.class);
 	}
 
 	public static void main(String[] args) {
