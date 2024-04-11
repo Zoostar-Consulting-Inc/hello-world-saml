@@ -34,7 +34,7 @@ public class HelloWorldSaml extends SpringBootServletInitializer {
 		SecurityFilterChain bean = null;
 		if (securityEnabled) {
 			log.info("{}...", "Integrating SAML Security");
-			bean = security
+			bean = security.cors().and().csrf().disable()
 					.authorizeRequests(requests -> requests.antMatchers("/").permitAll().anyRequest().authenticated())
 					.saml2Login(withDefaults()).saml2Logout(withDefaults()).build();
 		} else {
