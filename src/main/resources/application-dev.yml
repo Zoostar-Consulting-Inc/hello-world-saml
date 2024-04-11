@@ -1,5 +1,6 @@
 spring:
   security:
+    enabled: true
     saml2:
       relyingparty:
         registration:
