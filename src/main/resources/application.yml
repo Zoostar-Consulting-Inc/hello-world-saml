@@ -2,3 +2,5 @@ spring:
   profiles:
     active:
       - local
+  servlet:
+    application-display-name: Hello World SAML2.0 Integration Example
