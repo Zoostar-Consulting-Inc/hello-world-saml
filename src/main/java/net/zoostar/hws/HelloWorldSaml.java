@@ -2,6 +2,7 @@ package net.zoostar.hws;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -18,6 +19,9 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication
 public class HelloWorldSaml extends SpringBootServletInitializer {
 
+	@Value("${spring.security.enabled:false}")
+	boolean securityEnabled;
+	
 	@Bean
 	OpenAPI openAPI() {
 		log.info("{}...", "Loading Swagger configuration");
@@ -27,9 +31,16 @@ public class HelloWorldSaml extends SpringBootServletInitializer {
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
-		return security
-				.authorizeRequests(authorize -> authorize.antMatchers("/").permitAll().anyRequest().authenticated())
+		SecurityFilterChain bean = null;
+		if(securityEnabled) {
+		bean = security
+				.authorizeRequests(requests -> requests.antMatchers("/").permitAll().anyRequest().authenticated())
 				.saml2Login(withDefaults()).saml2Logout(withDefaults()).build();
+		} else {
+			bean = security.authorizeRequests(requests -> requests.antMatchers("/**").permitAll()).build();
+		}
+		
+		return bean;
 	}
 
 	@Override
