@@ -21,7 +21,7 @@ public class HelloWorldSaml extends SpringBootServletInitializer {
 
 	@Value("${spring.security.enabled:false}")
 	boolean securityEnabled;
-	
+
 	@Bean
 	OpenAPI openAPI() {
 		log.info("{}...", "Loading Swagger configuration");
@@ -32,14 +32,15 @@ public class HelloWorldSaml extends SpringBootServletInitializer {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
 		SecurityFilterChain bean = null;
-		if(securityEnabled) {
-		bean = security
-				.authorizeRequests(requests -> requests.antMatchers("/").permitAll().anyRequest().authenticated())
-				.saml2Login(withDefaults()).saml2Logout(withDefaults()).build();
+		if (securityEnabled) {
+			log.info("{}...", "Integrating SAML Security");
+			bean = security
+					.authorizeRequests(requests -> requests.antMatchers("/").permitAll().anyRequest().authenticated())
+					.saml2Login(withDefaults()).saml2Logout(withDefaults()).build();
 		} else {
 			bean = security.authorizeRequests(requests -> requests.antMatchers("/**").permitAll()).build();
 		}
-		
+
 		return bean;
 	}
 
