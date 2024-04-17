@@ -1,9 +1,3 @@
-private:
-  key:
-    location: 
-certificate:
-  location: cl:public.crt
-  
 key:
   location:
     private: "file:${user.home}/.key/zoostar.key"
