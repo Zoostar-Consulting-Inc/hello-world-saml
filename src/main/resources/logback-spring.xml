@@ -38,7 +38,7 @@
 		<appender-ref ref="AppRollingFile" />
 	</logger>
 
-	<logger level="trace" additivity="false" name="org.springframework.security">
+	<logger level="debug" additivity="false" name="org.springframework.security">
 		<appender-ref ref="Console" />
 		<appender-ref ref="AppRollingFile" />
 	</logger>

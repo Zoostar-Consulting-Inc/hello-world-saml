@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Configuration
-public class WebApplicationContext implements WebMvcConfigurer {
+public class WebMvcConfigurerImpl implements WebMvcConfigurer {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {

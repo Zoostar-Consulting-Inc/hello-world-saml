@@ -1,7 +1,5 @@
 package net.zoostar.hws;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,11 +32,10 @@ public class HelloWorldSaml extends SpringBootServletInitializer {
 		SecurityFilterChain bean = null;
 		if (securityEnabled) {
 			log.info("{}...", "Integrating SAML Security");
-			bean = security.cors().and().csrf().disable()
-					.authorizeRequests(requests -> requests.antMatchers("/").permitAll().anyRequest().authenticated())
-					.saml2Login(withDefaults()).saml2Logout(withDefaults()).build();
+			bean = security.cors().and().csrf().disable().authorizeRequests().anyRequest().authenticated().and()
+					.saml2Login().and().build();
 		} else {
-			bean = security.authorizeRequests(requests -> requests.antMatchers("/**").permitAll()).build();
+			bean = security.authorizeRequests().anyRequest().permitAll().and().build();
 		}
 
 		return bean;
