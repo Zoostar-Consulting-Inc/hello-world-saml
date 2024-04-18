@@ -2,3 +2,5 @@ key:
   location:
     private: "file:${user.home}/.key/zoostar.key"
     public: "file:${user.home}/.key/zoostar.cer"
+server:
+  forward-headers-strategy: NATIVE
