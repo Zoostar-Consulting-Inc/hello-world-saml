@@ -7,7 +7,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.PortMapper;
 import org.springframework.security.web.SecurityFilterChain;
 
 import io.swagger.v3.oas.models.OpenAPI;
@@ -29,7 +28,7 @@ public class HelloWorldSaml extends SpringBootServletInitializer {
 	}
 
 	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity security, PortMapper portMapper) throws Exception {
+	SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
 		SecurityFilterChain bean = null;
 		if (securityEnabled) {
 			log.info("{}...", "Integrating SAML Security");
