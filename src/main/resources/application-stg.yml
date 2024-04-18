@@ -2,7 +2,5 @@ key:
   location:
     private: "file:${user.home}/.key/zoostar.key"
     public: "file:${user.home}/.key/zoostar.cer"
-server:
-  forward-headers-strategy: NATIVE
-  tomcat:
-    redirect-context-root: false
+acs:
+  url: https://stg.zoostar.net/hws/login/saml2/sso/google

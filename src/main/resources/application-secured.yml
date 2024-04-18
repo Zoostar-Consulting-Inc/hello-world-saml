@@ -5,6 +5,8 @@ spring:
       relyingparty:
         registration:
           google:
+            acs:
+              location: ${acs.url}
             signing:
               credentials:
                 - private-key-location: ${key.location.private}
