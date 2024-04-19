@@ -1,6 +1,4 @@
 key:
   location:
-    private: "file:${user.home}/.key/zoostar.key"
-    public: "file:${user.home}/.key/zoostar.cer"
-acs:
-  url: https://stg.zoostar.net/hws/login/saml2/sso/google
+    private: "file:${user.home}/.key/private.key"
+    public: "file:${user.home}/.key/public.cer"
