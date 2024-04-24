@@ -1,6 +1,10 @@
 pipeline {
 	agent any
 	
+	environment {
+	    build.number = '${env.BUILD_NUMBER}'
+	}
+
    	stages {
     	stage('Environment') {
             steps {
@@ -16,10 +20,6 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-            	script {
-            	    build.number = '${env.BUILD_NUMBER}'
-            	}
-
                 bat 'mvn -B deploy'
             }
         }
