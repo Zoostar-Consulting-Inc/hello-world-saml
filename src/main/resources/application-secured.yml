@@ -7,7 +7,7 @@ spring:
           google:
             signing:
               credentials:
-                - private-key-location: ${key.location.private}
-                  certificate-location: ${key.location.public}
+                - private-key-location: "${key.location.private}"
+                  certificate-location: "${key.location.public}"
             identityprovider:
               metadata-uri: "classpath:metadata/GoogleIDPMetadata.xml"
