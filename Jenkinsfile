@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Install') {
             steps {
-                echo 'mvn -B install -build.number=${env.BUILD_NUMBER}'
+                echo 'mvn -B install'
             }
         }
         stage('Deploy') {
