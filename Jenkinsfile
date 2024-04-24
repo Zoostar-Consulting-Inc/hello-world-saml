@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	
 	environment {
-	    build.number = "${BUILD_NUMBER}"
+	    build.number = "${env.BUILD_NUMBER}"
 	}
 
    	stages {
@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo "Using environment:"
                 echo "Building branch: ${env.GIT_BRANCH}"
-                echo "Build #: ${BUILD_NUMBER}"
+                echo "Build #: ${build.number}"
             }
         }
         stage('Install') {
