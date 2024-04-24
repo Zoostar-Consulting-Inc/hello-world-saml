@@ -17,7 +17,7 @@
 				<filtering>true</filtering>
 				<directory>src/main/resources</directory>
 				<includes>
-					<include>*.?ml</include>
+					<include>*.*ml</include>
 				</includes>
 			</resource>
 		</resources>
