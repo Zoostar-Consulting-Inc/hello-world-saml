@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	
 	environment {
-	    'build.number' = "${env.BUILD_NUMBER}"
+	    build.number = "${env.BUILD_NUMBER}"
 	}
 
    	stages {
@@ -10,15 +10,10 @@ pipeline {
             steps {
                 echo "Using environment:"
                 echo "Building branch: ${env.GIT_BRANCH}"
-                echo "Build #: ${env.BUILD_NUMBER}"
+                echo "Build #: ${build.number}"
             }
         }
-        stage('Install') {
-            steps {
-                echo 'mvn -B install'
-            }
-        }
-        stage('Deploy') {
+        stage('Build & Deploy') {
             steps {
                 bat 'mvn -B deploy'
             }
