@@ -2,7 +2,7 @@ pipeline {
 	agent any
 	
 	environment {
-	    build.number = ${BUILD_NUMBER}
+	    build.number = "${BUILD_NUMBER}"
 	}
 
    	stages {
