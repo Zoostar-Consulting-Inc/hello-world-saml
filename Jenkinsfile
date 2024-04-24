@@ -6,7 +6,6 @@ pipeline {
             steps {
                 echo "Using environment:"
                 echo "Building branch: ${env.GIT_BRANCH}"
-                echo "Build #: ${build.number}"
             }
         }
         stage('Build & Deploy') {
