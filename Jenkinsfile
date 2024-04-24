@@ -16,7 +16,11 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                bat 'mvn -B deploy -build.number=${env.BUILD_NUMBER}'
+            	script {
+            	    build.number = '${env.BUILD_NUMBER}'
+            	}
+
+                bat 'mvn -B deploy'
             }
         }
     }
