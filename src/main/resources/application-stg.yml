@@ -1,4 +1,4 @@
 key:
   location:
-    private: "file:${user.home}/.key/private.key"
-    public: "file:${user.home}/.key/public.cer"
+    private: "file:${user.home}/.key/stg.key"
+    public: "file:${user.home}/.key/stg.cer"
